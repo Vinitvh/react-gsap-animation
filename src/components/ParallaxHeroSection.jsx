@@ -1,10 +1,23 @@
 import React from "react";
-import ForeGroundHero from "./ForeGroundHero";
+import styled from "styled-components";
+import BackgroundHero from "./BackgroundHero";
+import ForegroundHero from "./ForegroundHero";
+import MidgroundHero from "./MidgroundHero";
+
+const StyledSVGWrapper = styled.div`
+  position: relative;
+  width: 50vw;
+  height: 30vh;
+`;
 
 function ParallaxHeroSection() {
   return (
     <>
-      <ForeGroundHero />
+      <StyledSVGWrapper>
+        <ForegroundHero />
+        <MidgroundHero />
+        <BackgroundHero />
+      </StyledSVGWrapper>
     </>
   );
 }

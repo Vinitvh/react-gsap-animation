@@ -10,7 +10,7 @@ const StyledHeroSection = styled.section`
   flex-direction: column;
   align-items: center;
   justify-between: center;
-  img: {
+  img {
     height: 25vmin;
     pointer-events: none;
   }
