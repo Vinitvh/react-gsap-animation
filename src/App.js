@@ -1,5 +1,6 @@
 import logo from "./assets/logo.svg";
 import styled from "styled-components";
+import ParallaxHeroSection from "./components/ParallaxHeroSection";
 
 const StyledHeroSection = styled.section`
   position: relative;
@@ -30,6 +31,7 @@ function App() {
     <StyledHeroSection>
       <img src={logo} alt="Logo" />
       <StylesTitle>Back to smooth and firm skin</StylesTitle>
+      <ParallaxHeroSection />
     </StyledHeroSection>
   );
 }
