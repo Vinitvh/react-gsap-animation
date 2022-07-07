@@ -1,6 +1,7 @@
 import logo from "./assets/logo.svg";
 import styled from "styled-components";
-import ParallaxHeroSection from "./components/ParallaxHeroSection";
+import ParallaxHeroSection from "./components/ParallaxHeroSection/ParallaxHeroSection";
+import ContentSection from "./components/ContentSection";
 
 const StyledHeroSection = styled.section`
   position: relative;
@@ -28,11 +29,19 @@ const StylesTitle = styled.h1`
 
 function App() {
   return (
-    <StyledHeroSection>
-      <img src={logo} alt="Logo" />
-      <StylesTitle>Back to smooth and firm skin</StylesTitle>
-      <ParallaxHeroSection />
-    </StyledHeroSection>
+    <>
+      <StyledHeroSection>
+        <img src={logo} alt="Logo" />
+        <StylesTitle>Back to smooth and firm skin</StylesTitle>
+        <ParallaxHeroSection />
+      </StyledHeroSection>
+      <ContentSection
+        title={"Lorem"}
+        text={
+          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam"
+        }
+      />
+    </>
   );
 }
 
