@@ -2,6 +2,10 @@ import logo from "./assets/logo.svg";
 import styled from "styled-components";
 import ParallaxHeroSection from "./components/ParallaxHeroSection/ParallaxHeroSection";
 import ContentSection from "./components/ContentSection";
+import CrossRevealSection from "./components/CrossRevealSection";
+
+import faceOne from "../src/assets/images/faceOne.png";
+import landscapeOne from "../src/assets/images/landscapeOne.png";
 
 const StyledHeroSection = styled.section`
   position: relative;
@@ -40,6 +44,14 @@ function App() {
         text={
           "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam"
         }
+      />
+      <CrossRevealSection
+        face={faceOne}
+        landscape={landscapeOne}
+        name={"Vinit Hemadri"}
+        job={"Founder"}
+        sentenceOne={"We only launch"}
+        sentenceTwo={"what we love"}
       />
     </>
   );
