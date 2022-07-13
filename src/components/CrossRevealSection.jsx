@@ -75,6 +75,7 @@ function CrossRevealSection({
   job,
   sentenceOne,
   sentenceTwo,
+  crossReveal,
 }) {
   //animate container one way
   const containerRef = useRef();
@@ -105,11 +106,20 @@ function CrossRevealSection({
       },
     });
     crossRevealTween
-      .fromTo(containerRef.current, { xPercent: 100, x: 0 }, { xPercent: 0 })
-      .fromTo(imageRef.current, { xPercent: -100, x: 0 }, { xPercent: 0 }, 0)
+      .fromTo(
+        containerRef.current,
+        { [crossReveal]: 100, x: 0 },
+        { [crossReveal]: 0 }
+      )
+      .fromTo(
+        imageRef.current,
+        { [crossReveal]: -100, x: 0 },
+        { [crossReveal]: 0 },
+        0
+      )
       .from(personRef.current, { autoAlpha: 0 }, { autoAlpha: 1 })
       .from(quoteRef.current, { autoAlpha: 0 }, { autoAlpha: 1 });
-  }, []);
+  }, [crossReveal]);
 
   return (
     <StyledCrossRevealContainer ref={triggerRef}>

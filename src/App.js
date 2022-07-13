@@ -6,6 +6,7 @@ import CrossRevealSection from "./components/CrossRevealSection";
 
 import faceOne from "../src/assets/images/faceOne.png";
 import landscapeOne from "../src/assets/images/landscapeOne.png";
+import landscapeTwo from "../src/assets/images/landscapeTwo.png";
 
 const StyledHeroSection = styled.section`
   position: relative;
@@ -39,6 +40,15 @@ function App() {
         <StylesTitle>Back to smooth and firm skin</StylesTitle>
         <ParallaxHeroSection />
       </StyledHeroSection>
+      <CrossRevealSection
+        face={faceOne}
+        landscape={landscapeOne}
+        name={"Vinit Hemadri"}
+        job={"Founder"}
+        sentenceOne={"We only launch"}
+        sentenceTwo={"what we love"}
+        crossReveal={"xPercent"}
+      />
       <ContentSection
         title={"Take Care"}
         text={
@@ -47,11 +57,12 @@ function App() {
       />
       <CrossRevealSection
         face={faceOne}
-        landscape={landscapeOne}
+        landscape={landscapeTwo}
         name={"Vinit Hemadri"}
         job={"Founder"}
         sentenceOne={"We only launch"}
         sentenceTwo={"what we love"}
+        crossReveal={"yPercent"}
       />
     </>
   );
