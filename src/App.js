@@ -40,9 +40,9 @@ function App() {
         <ParallaxHeroSection />
       </StyledHeroSection>
       <ContentSection
-        title={"Lorem"}
+        title={"Take Care"}
         text={
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam"
+          "You can get your body and skin in tip-top shape without taking toll on the environment"
         }
       />
       <CrossRevealSection
