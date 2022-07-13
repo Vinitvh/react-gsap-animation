@@ -1,5 +1,9 @@
-import React from "react";
+import { React, useRef, useEffect } from "react";
 import styled from "styled-components";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const StyledCrossRevealContainer = styled.section`
   position: relative;
@@ -16,10 +20,10 @@ const StyledCrossRevealContainer = styled.section`
     position: absolute;
     overflow: hidden;
     top: 0;
-    transform: translate(50%, 0);
+    transform: translate(100%, 0);
   }
   .afterImage img {
-    transform: translate(-50%, 0);
+    transform: translate(-100%, 0);
   }
   .person__content {
     color: #080f0f;
@@ -72,19 +76,54 @@ function CrossRevealSection({
   sentenceOne,
   sentenceTwo,
 }) {
+  //animate container one way
+  const containerRef = useRef();
+
+  // animate image the opposite way
+  const imageRef = useRef();
+
+  // Starting point
+  const triggerRef = useRef();
+
+  // target the person container
+  const personRef = useRef();
+
+  // target the quote container
+  const quoteRef = useRef();
+
+  useEffect(() => {
+    const crossRevealTween = gsap.timeline({
+      defaults: { ease: "none" },
+      scrollTrigger: {
+        trigger: triggerRef.current,
+        start: "center center",
+        end: () => "+=" + triggerRef.current.offsetWidth,
+        scrub: true,
+        pin: true,
+        anticipatePin: 1,
+        markers: false,
+      },
+    });
+    crossRevealTween
+      .fromTo(containerRef.current, { xPercent: 100, x: 0 }, { xPercent: 0 })
+      .fromTo(imageRef.current, { xPercent: -100, x: 0 }, { xPercent: 0 }, 0)
+      .from(personRef.current, { autoAlpha: 0 }, { autoAlpha: 1 })
+      .from(quoteRef.current, { autoAlpha: 0 }, { autoAlpha: 1 });
+  }, []);
+
   return (
-    <StyledCrossRevealContainer>
+    <StyledCrossRevealContainer ref={triggerRef}>
       <div className="crossRevealImage">
         <img src={face} alt="Face" />
-        <div className="person__content">
+        <div className="person__content" ref={personRef}>
           <h3 className="person__name">{name}</h3>
           <p className="person__job">{job}</p>
         </div>
       </div>
-      <div className="crossRevealImage afterImage">
-        <img src={landscape} alt="Landscape" />
+      <div className="crossRevealImage afterImage" ref={containerRef}>
+        <img src={landscape} alt="Landscape" ref={imageRef} />
       </div>
-      <div className="landscape__wrapper">
+      <div className="landscape__wrapper" ref={quoteRef}>
         <p className="quote__sentence">
           {sentenceOne}
           <br />
